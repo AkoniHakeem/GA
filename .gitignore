@@ -1,0 +1,8 @@
+notes.md
+taskDescription.md
+strategy.md
+
+node_modules
+.vscode
+dist
+build
