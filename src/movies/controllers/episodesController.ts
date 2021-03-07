@@ -12,7 +12,7 @@ be listed along with it the count of comments. == one endpoint ==
 episodeController.list = async (req: Request, res: Response) => {
     try {
        const episodesList = await Episode.findAll({
-           order: ["created", "ASC"],
+           order: ["releaseDate", "ASC"],
            attributes: { 
                include: [[_sequelize.fn("COUNT", _sequelize.col("Comment.id")), "comments" ]]
            }
@@ -20,8 +20,8 @@ episodeController.list = async (req: Request, res: Response) => {
 
        // episodes should contain field for count of comments
        
-       let epsi_json = JSON.stringify(episodesList)
-       res.json(epsi_json);
+       let epsodes_json = JSON.stringify(episodesList)
+       res.json(epsodes_json);
     } catch (error) {
         // todo log error
         res.sendStatus(500)
@@ -29,7 +29,7 @@ episodeController.list = async (req: Request, res: Response) => {
 }
 
 /* Search for a List of Episodes a Character featured in . */
-episodeController.find = async (req: Request, res: Response) => {
+episodeController.search = async (req: Request, res: Response) => {
     try {
         const {character_id} = req.query as {character_id: string};
         const character_Episodes = await Episode.findAll({where: {characterId: character_id}})
@@ -44,7 +44,7 @@ episodeController.find = async (req: Request, res: Response) => {
 episodeController.addComment = async (req: Request, res: Response) => {
     try {
         const clientIpAddress = getClientIp(req)
-        // this assumes that episode_id would be set in the body of the request
+        // this assumes that episode_id would be set in the body of the request along with the comment
         const comment = await Comment.create({...(req.body), ipAddress: clientIpAddress});
         if(comment instanceof Comment) {
             res.sendStatus(200);

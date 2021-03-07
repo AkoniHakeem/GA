@@ -1,15 +1,18 @@
+import { timeStamp } from "node:console"
 import { DataTypes, NOW } from "sequelize"
 import sequelize from "../../lib/dbClient"
 import Character from "./character"
 import Episode from "./episode"
 
-let CharacterEpisode = sequelize.define("CharacterEpisodes", {created: {type: DataTypes.DATE, defaultValue: NOW}})
+let Character_Episode = sequelize.define("Character_Episode", {
+    created: {type: DataTypes.DATE, defaultValue: NOW}
+}, {timestamps: false})
 
 Character.belongsToMany(Episode, {
-    through: CharacterEpisode
+    through: Character_Episode
 })
 
 Episode.belongsToMany(Character, {
-    through: CharacterEpisode
+    through: Character_Episode
 })
-export default CharacterEpisode
+export default Character_Episode

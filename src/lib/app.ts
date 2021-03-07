@@ -2,12 +2,16 @@ import express from "express";
 import ping from "../routes/ping"
 import sequelize from "./dbClient";
 import config from "./config";
-import _episodeRouter from "../routes/episodeRouter"
+import _episodeRouter from "../routes/episodesRouter"
+import _characterRouter from "../routes/charactersRouter"
+import _commentsRouter from "../routes/commentsRouter"
 
 const app = express(); 
 /* Routers */
 const pingRouter = ping(express);
-const episodeRouter = _episodeRouter(express);
+const episodesRouter = _episodeRouter(express);
+const commentsRouter = _commentsRouter(express);
+const charactersRouter = _characterRouter(express)
 /* Routers */
 
 console.log(config["mysqlDb"]);
@@ -41,6 +45,8 @@ const baseUrl = "/api/v1"
 
 // app.use(baseUrl + "")
 app.use("/ping", pingRouter);
-app.use(baseUrl + "/episodes", episodeRouter) 
+app.use(baseUrl + "/episodes", episodesRouter)
+app.use(baseUrl + "/characters", charactersRouter)
+app.use(baseUrl + "/comments", commentsRouter) 
 
 export default app;  
