@@ -1,6 +1,7 @@
 import sequelize from "../../lib/dbClient"
 import {DataTypes, NOW } from "sequelize"
 import Comment from "./comment"
+import Character from "./character"
 // import Character from "./character"
 
 let Episode = sequelize.define("Episode", {
@@ -12,14 +13,9 @@ let Episode = sequelize.define("Episode", {
     created: {type: DataTypes.DATE, allowNull: false, defaultValue: NOW}
 })
 
-const episode_id = "episode_id"
-// Episode.hasMany(Character, {
-//     foreignKey: episode_id
-// }) 
 
-Episode.hasMany(Comment, {
-    foreignKey: episode_id
-})
+
+
 
 /* 
 EPISODE DATA : 

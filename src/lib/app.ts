@@ -5,6 +5,10 @@ import config from "./config";
 import _episodeRouter from "../routes/episodesRouter"
 import _characterRouter from "../routes/charactersRouter"
 import _commentsRouter from "../routes/commentsRouter"
+import Episode from "../movies/model/episode";
+import Character from "../movies/model/character";
+import Character_Episode from "../movies/model/characterEpisodes";
+import modelAssociation from "../movies/model/associations";
 
 const app = express(); 
 /* Routers */
@@ -20,10 +24,12 @@ sequelize.authenticate().then((v: any) => {
 }).catch((err) => {
   console.log("there was an error connecting to mysql", err)
 })
-
+//
+modelAssociation.run();
+//
 sequelize.sync().then((seq) => {
   console.log("database sync is active")
-}).catch(err => {console.log("Err: error occurred while syncing")})
+}).catch(err => {console.log("Err: error occurred while syncing", err)})
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))

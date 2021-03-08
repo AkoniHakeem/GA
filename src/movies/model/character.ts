@@ -1,6 +1,6 @@
 import sequelize from "../../lib/dbClient"
 import {DataTypes, NOW} from "sequelize"
-// import Episode from "./episode"
+import Episode from "./episode"
 import Location from "./location"
 
 let Character = sequelize.define("Character", {
@@ -15,7 +15,8 @@ let Character = sequelize.define("Character", {
 })
 
 // const character_key = "character_id"
-// Character.hasMany(Episode, {foreignKey: character_key})
+
+
 
 /* 
  CHARACTER DATA : 
