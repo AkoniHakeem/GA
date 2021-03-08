@@ -15,7 +15,7 @@ environment.production = {
     "httpPort": process.env.HTTP_PORT,
     "mysqlDb": process.env.MYSQL_DB
 }
-const envName = process.env.NODE_ENV? process.env.NODE_ENV.trim().toLocaleLowerCase() : "developmant";
+const envName = process.env.NODE_ENV? process.env.NODE_ENV.trim().toLocaleLowerCase() : "development";
 console.log("service running in " + envName + " environment")
 const einvironmentToExport = environment[envName]
 
