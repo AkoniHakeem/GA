@@ -12,7 +12,7 @@ environment.staging = {
 }
 
 environment.production = {
-    "httpPort": 3000,
+    "httpPort": process.env.HTTP_PORT,
     "mysqlDb": process.env.MYSQL_DB
 }
 const envName = process.env.NODE_ENV? process.env.NODE_ENV.trim().toLocaleLowerCase() : "developmant";
