@@ -4,7 +4,7 @@ import {Request, Response} from "express"
 const _characterRouter = (e: any) => {
     const characterRouter = e.Router();
 
-    characterRouter.get("/list/:sort/:sortDirection/:filter/:filterValue", characterController.list);
+    characterRouter.get("/list", characterController.list);
 
     return characterRouter;
 }

@@ -7,7 +7,7 @@ const _episodeRouter = (e: any) => {
     episodeRouter.get("/list", episodeController.list);
 
     //
-    episodeRouter.get("/search/:character_id", episodeController.search)
+    episodeRouter.get("/list/:character_id", episodeController.search)
 
     //
     episodeRouter.post("/add-comment", episodeController.addComment)

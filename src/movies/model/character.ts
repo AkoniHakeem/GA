@@ -5,7 +5,7 @@ import Location from "./location"
 
 let Character = sequelize.define("Character", {
     firstName:{type: DataTypes.STRING, allowNull: false} ,
-    lastname: {type: DataTypes.STRING, allowNull: false},
+    lastName: {type: DataTypes.STRING, allowNull: false},
     status: {type: DataTypes.STRING, allowNull: false, validate:{isIn: [["ACTIVE", "DEAD", "UNKNOWN"]]}},
     stateOfOrigin: {type: DataTypes.STRING},
     gender: {type: DataTypes.STRING, allowNull: false, validate: {isIn: [["MALE", "FEMALE"]]}},

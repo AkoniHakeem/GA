@@ -6,10 +6,12 @@ import Comment from "./comment"
 const modelAssociation = {
     run: () => {
         Character.belongsToMany(Episode, {
+            as: "Episodes",
             through: Character_Episode
           })
 
           Episode.belongsToMany(Character, {
+            as: "Characters",
             through: Character_Episode
           })
 

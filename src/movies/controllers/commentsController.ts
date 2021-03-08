@@ -8,15 +8,22 @@ import Comment from "../model/comment";
 the commenter and DateTime they were stored. == one endpoint == */
 const commentsController: any = {}
 
-commentsController.list = (req:Request, res: Response) => {
+commentsController.list = async (req:Request, res: Response) => {
     try {
-        const {episode_id} = req.query;
-        let comments = Comment.findAll({
-            where: {
-                episode_id
-            },
-            order: [["created", "DESC"]]
-        })
+        const {episode_id} = req.params;
+        if(episode_id) {
+            let comments = await Comment.findAll({
+                where: {
+                    episode_id
+                },
+                order: [["created", "DESC"]]
+            })
+    
+            res.status(200).json(comments);
+        }
+        else {
+            res.status(400).send("Err: episode_id is a requied parameter")
+        }
     } catch (error) {
         // todo: logging
         res.sendStatus(500);

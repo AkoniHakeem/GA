@@ -5,9 +5,7 @@ import config from "./config";
 import _episodeRouter from "../routes/episodesRouter"
 import _characterRouter from "../routes/charactersRouter"
 import _commentsRouter from "../routes/commentsRouter"
-import Episode from "../movies/model/episode";
-import Character from "../movies/model/character";
-import Character_Episode from "../movies/model/characterEpisodes";
+import bodyParser from "body-parser"
 import modelAssociation from "../movies/model/modelAssociations";
 
 const app = express(); 
@@ -24,7 +22,7 @@ sequelize.authenticate().then((v: any) => {
 }).catch((err) => {
   console.log("there was an error connecting to mysql", err)
 })
-//
+// placed model association here due to issues with model assocition not be loaded corrected before sequelize sync
 modelAssociation.run();
 //
 sequelize.sync().then((seq) => {
@@ -32,7 +30,7 @@ sequelize.sync().then((seq) => {
 }).catch(err => {console.log("Err: error occurred while syncing", err)})
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
