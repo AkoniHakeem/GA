@@ -8,7 +8,7 @@ import _commentsRouter from "../routes/commentsRouter"
 import Episode from "../movies/model/episode";
 import Character from "../movies/model/character";
 import Character_Episode from "../movies/model/characterEpisodes";
-import modelAssociation from "../movies/model/associations";
+import modelAssociation from "../movies/model/modelAssociations";
 
 const app = express(); 
 /* Routers */
