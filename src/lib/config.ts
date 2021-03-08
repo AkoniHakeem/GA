@@ -16,6 +16,7 @@ environment.production = {
     "mysqlDb": process.env.MYSQL_DB
 }
 const envName = process.env.NODE_ENV? process.env.NODE_ENV.trim().toLocaleLowerCase() : "developmant";
+console.log("service running in " + envName + " environment")
 const einvironmentToExport = environment[envName]
 
 export default einvironmentToExport;
