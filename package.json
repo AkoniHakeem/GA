@@ -4,7 +4,7 @@
   "description": "ga coding assignment",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node tests/index.js",
     "build": "npx tsc",
     "prestart": "npm run build",
     "start": "NODE_ENV=production & node dist/index.js",

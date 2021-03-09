@@ -16,7 +16,6 @@ const commentsRouter = _commentsRouter(express);
 const charactersRouter = _characterRouter(express)
 /* Routers */
 
-console.log(config["mysqlDb"]);
 sequelize.authenticate().then((v: any) => {
   console.log("mysql connection was successful");
 }).catch((err) => {

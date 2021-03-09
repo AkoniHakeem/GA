@@ -1,0 +1,11 @@
+node_modules
+tests
+Dockerfile*
+docker-compose*
+.dockerignore
+.git
+.gitignore
+strategy.md
+notes.md
+taskDescription.md
+.vscode

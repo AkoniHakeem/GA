@@ -6,6 +6,11 @@ environment.development = {
     "mysqlDb": process.env.MYSQL_DB
 }
 
+environment.testing = {
+    "httpPort": 4000,
+    "mysqlDb": process.env.MYSQL_DB
+}
+
 environment.staging = {
     "httpPort": 3000,
     "mysqlDb": ""

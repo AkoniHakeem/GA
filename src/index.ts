@@ -3,10 +3,16 @@ import server from "./lib/server";
 
 let appStarter: any = {}
 
-appStarter.start = () => {
+appStarter.start = (callback?: any) => {
     server.init()
+
+    setTimeout(() => {
+        callback();
+    }, 5000);
 }
 
-appStarter.start();
+if(require.main === module) {
+    appStarter.start();
+}
  
 export default appStarter
