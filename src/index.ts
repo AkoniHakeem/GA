@@ -7,7 +7,7 @@ appStarter.start = (callback?: any) => {
     server.init()
 
     setTimeout(() => {
-        callback();
+        callback && callback();
     }, 5000);
 }
 
