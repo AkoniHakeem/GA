@@ -1,12 +1,12 @@
 From node:14
+# OR
+# FROM node:10-alpine
 
 WORKDIR /ga
 
 ENV NODE_ENV=prodution
 ENV HTTP_PORT=8080
 ENV MYSQL_DB=${MYSQL_DB}
-
-EN
 
 COPY package*.json
 
