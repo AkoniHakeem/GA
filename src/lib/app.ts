@@ -1,35 +1,34 @@
 import express from "express";
-import ping from "../routes/ping"
-import sequelize from "./dbClient";
-import config from "./config";
+import ping from "../routes/ping";
+import initDb from "./initDb"
 import _episodeRouter from "../routes/episodesRouter"
 import _characterRouter from "../routes/charactersRouter"
-import _commentsRouter from "../routes/commentsRouter"
-import bodyParser from "body-parser"
-import modelAssociation from "../movies/model/modelAssociations";
+import _commentsRouter from "../routes/commentsRouter";
+import CharacterService from "../movies/services/charactersServices";
+import CommentsService from "../movies/services/commentsServices";
+import EpisodesServices from "../movies/services/episodesServices";
 
 const app = express(); 
+
+/* Services */
+  const services = {
+    characterService: new CharacterService(),
+    commentService: new CommentsService(),
+    episodesService: new EpisodesServices()
+  }
+/* Services */
+
 /* Routers */
 const pingRouter = ping(express);
-const episodesRouter = _episodeRouter(express);
-const commentsRouter = _commentsRouter(express);
-const charactersRouter = _characterRouter(express)
+const episodesRouter = _episodeRouter(express, services.episodesService);
+const commentsRouter = _commentsRouter(express, services.commentService);
+const charactersRouter = _characterRouter(express, services.characterService)
 /* Routers */
 
-sequelize.authenticate().then((v: any) => {
-  console.log("mysql connection was successful");
-}).catch((err) => {
-  console.log("there was an error connecting to mysql", err)
-})
-// placed model association here due to issues with model assocition not be loaded corrected before sequelize sync
-modelAssociation.run();
-//
-sequelize.sync().then((seq) => {
-  console.log("database sync is active")
-}).catch(err => {console.log("Err: error occurred while syncing", err)})
+initDb()
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");

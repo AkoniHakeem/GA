@@ -2,6 +2,7 @@ import Character from "./character"
 import Character_Episode from "./characterEpisodes"
 import Episode from "./episode"
 import Comment from "./comment"
+import Location from "./location"
 
 const modelAssociation = {
     run: () => {
@@ -15,10 +16,14 @@ const modelAssociation = {
             through: Character_Episode
           })
 
-          const episode_id = "episode_id"
+          const episodeId = "episodeId"
 
         Episode.hasMany(Comment, {
-            foreignKey: episode_id
+            foreignKey: episodeId
+        })
+
+        Location.hasMany(Character, {
+          foreignKey: "locationId"
         })
     }
 }

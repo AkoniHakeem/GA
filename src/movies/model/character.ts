@@ -9,25 +9,8 @@ let Character = sequelize.define("Character", {
     status: {type: DataTypes.STRING, allowNull: false, validate:{isIn: [["ACTIVE", "DEAD", "UNKNOWN"]]}},
     stateOfOrigin: {type: DataTypes.STRING},
     gender: {type: DataTypes.STRING, allowNull: false, validate: {isIn: [["MALE", "FEMALE"]]}},
-    location_id: {type: DataTypes.INTEGER, references: {model: Location, key: "id"}},
-    // episode_id: {type: DataTypes.INTEGER, references: {model: Episode, key: "id"}},  
+    locationId: {type: DataTypes.INTEGER, references: {model: Location, key: "id"}},
     created: {type: DataTypes.DATE, allowNull: false, defaultValue: NOW}
 })
 
-// const character_key = "character_id"
-
-
-
-/* 
- CHARACTER DATA : 
- firstName* ( String ) ,
- lastName* ( String ) , 
- status* ( String – ‘ACTIVE’ or ‘DEAD’ or ‘UNKNOWN’) , 
- stateOfOrigin ( String ) , 
- gender* (String – ‘MALE’ or ‘FEMALE’ ) , 
- location ( Location Data
-Type ) , 
-episodes (Episode Data Type ) , 
-created* (DateTime)
-*/
 export default Character

@@ -8,12 +8,5 @@ let Location = sequelize.define("Location", {
     created: {type: DataTypes.DATE, allowNull: false, defaultValue: NOW}
 })
 
-/* 
-LOCATION DATA : 
-name* ( String ) , 
-latitude* ( double ) , 
-longitude* (double) ,
-created* (DateTime)
-*/
 
 export default Location

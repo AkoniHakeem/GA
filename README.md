@@ -1,5 +1,5 @@
 ## GA MOVIE API PROJECT
-- This project is my effort on th coding assignment requested by GA.
+- This project is my effort on the coding assignment requested by GA.
 
 ## Description
 - The project caputures specifications requiring to model a scenario based on the models present in the src/movie/model folder.
@@ -8,11 +8,11 @@
 - A live version of this project runs on digital ocean app platform along with a managed mysql database server
 - You can access the live project from here: https://ga-w2gvo.ondigitalocean.app/ping - "this should respond with a pong". Visit the api documentation section to see the available endpoints to query 
 
-# Run the project
+## Run the project
 - You can clone the project from here https://github.com/AkoniHakeem/GA
 - In your editor terminal type "npm build" to build and then run "npm run dev" to run the project locally. Bear in mind that you would need to provide valid values for HTTP_PORT, MYSQL_DB where HTTP_PORT is the port number you want the app to run on and MYSQL_DB is the mysql db connection string.
 
-- ## Project Architecture
+## Project Architecture
 - I have used the MVC design pattern albeit with the View detached so we have the Model and Controller comibined into single module.
 - The project has been written in typscript for dev support and maintenance. The build command generates the actual javascript that runs
 - There is a separate lib that provides a more general support. It includes files such as server.ts, app.ts, dbClient, ... .
@@ -23,6 +23,7 @@
 
 ## Technology Stack
 - Javascript
+- Typescript
 - Node Js
 - Express Js
 - Node testing library
