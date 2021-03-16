@@ -2,25 +2,25 @@
  * API Tests
  *
  */
-
+// todo: implement class based tests and test runner
 // Dependencies
-var app = require("../dist/index");
-var assert = require('assert');
-var http = require('http');
-var config = require("../dist/lib/config");
-const StringDecoder = require("string_decoder").StringDecoder
+import app from "../index"
+import assert from "assert"
+import http from "http"
+import config from "../lib/config"
+import {StringDecoder} from "string_decoder"
 
 // Holder for Tests
-var api = {};
+var api: any = {};
 
 // Helpers
-var helpers = {};
-helpers.makeGetRequest = function(path,callback){
+var helpers: any = {};
+helpers.makeGetRequest = function(path: string, callback: any){
   // Configure the request details
   var requestDetails = {
     'protocol' : 'http:',
     'hostname' : 'localhost',
-    'port' : config.default.httpPort,
+    'port' : config.httpPort,
     'method' : 'GET',
     'path' : path,
     'headers' : {
@@ -30,17 +30,17 @@ helpers.makeGetRequest = function(path,callback){
 
 
   // Send the request
-  var req = http.request(requestDetails,function(res){
+  var req = http.request(requestDetails,function(res: any){
       callback(res);
   });
   req.end();
 };
 
 // The main init() function should be able to run without throwing.
-api['app.start should start without throwing'] = function(done){
+api['app.start should start without throwing'] = function(done: any){
   assert.doesNotThrow(function(){
     try {
-      app.default.start(function(err){
+      app.start(function(err: string){
         done();
       })
     } catch (error) {
@@ -49,11 +49,11 @@ api['app.start should start without throwing'] = function(done){
   },TypeError);
 };
 
-api['/ping should respond with a pong'] = function(done) {
-  helpers.makeGetRequest("/ping", function(res){
+api['/ping should respond with a pong'] = function(done: any) {
+  helpers.makeGetRequest("/ping", function(res: any){
     let decoder = new StringDecoder("utf-8")
     let data = ""
-    res.on("data", (chunck) => { 
+    res.on("data", (chunck: any) => { 
         data += decoder.write(chunck);
     }
       )
@@ -66,4 +66,4 @@ api['/ping should respond with a pong'] = function(done) {
 }
 
 // Export the tests to the runner
-module.exports = api;
+export default api;

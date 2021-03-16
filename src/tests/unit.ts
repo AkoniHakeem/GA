@@ -4,12 +4,12 @@
  */
 
 // Dependencies
-var assert = require('assert');
+import assert from "assert"
 
 // Holder for Tests
-var unit = {};
+var unit: any = {};
 
 
 
 // Export the tests to the runner
-module.exports = unit;
+export default unit

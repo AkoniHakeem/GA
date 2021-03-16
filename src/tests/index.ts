@@ -7,14 +7,15 @@
  process.env.NODE_ENV = 'testing';
 
 // Application logic for the test runner
-_app = {};
+let _app: any = {};
 
 // Holder of all tests
 _app.tests = {};
 
 // Dependencies
 // _app.tests.unit = require('./unit');
-_app.tests.api = require('./api');
+import api from "./api."
+_app.tests.api = api
 
 // Count all the tests
 _app.countTests = function(){
@@ -34,7 +35,7 @@ _app.countTests = function(){
 
 // Run all the tests, collecting the errors and successes
 _app.runTests = function(){
-  var errors = [];
+  var errors: any = [];
   var successes = 0;
   var limit = _app.countTests();
   var counter = 0;
@@ -79,7 +80,7 @@ _app.runTests = function(){
 
 
 // Product a test outcome report
-_app.produceTestReport = function(limit,successes,errors){
+_app.produceTestReport = function(limit: any ,successes:any, errors: any){
   console.log("");
   console.log("--------BEGIN TEST REPORT--------");
   console.log("");
@@ -92,7 +93,7 @@ _app.produceTestReport = function(limit,successes,errors){
   if(errors.length > 0){
     console.log("--------BEGIN ERROR DETAILS--------");
     console.log("");
-    errors.forEach(function(testError){
+    errors.forEach(function(testError: any){
       console.log('\x1b[31m%s\x1b[0m',testError.name);
       console.log(testError.error);
       console.log("");

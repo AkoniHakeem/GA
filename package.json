@@ -4,7 +4,7 @@
   "description": "ga coding assignment",
   "main": "dist/index.js",
   "scripts": {
-    "test": "node tests/index.js",
+    "test": "node dist/tests/index.js",
     "tsc": "npx tsc",
     "babel": "npm run tsc & babel src -d dist --extensions \".ts\"",
     "build": "npx tsc",
